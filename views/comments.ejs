@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="row">
+      <h6 class="text-muted">Posted by <%= writing.author %> <%= writing.createdAt %></h6>
+    </div>
+    <h3><%= writing.title %></h3>
+    <h5><%= writing.writing %></h5>
+    <form  method="post" action="/comment/<%= post._id %>">
+      <textarea name="comment" rows="5" placeholder="What are your thoughts?"></textarea>
+      <input class="button" id="postButton" type="submit" value="comment">
+    </form>
+    <br>
+    <hr>
+    <% comments.forEach( comment => { %>
+      <div class="row">
+        <h6 class="text-muted"><%= comment.user %> ~ <%= comment.createdAt %></h6>
+      </div>
+      <h5><%= comment.comment %></h5>
+    <% }) %>
+
+
+  </div>
+</div>

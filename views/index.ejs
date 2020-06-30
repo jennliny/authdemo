@@ -1,15 +1,40 @@
 
-
-  <div class="jumbotron">
-    <h1> Authentication Demo </h1>
-    <p>Welcome to the Authentication Demo </p>
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <h1> Virtual Writing Workshop </h1>
+    <p>Welcome to the Virtual Writing Workshop </p>
     <ul>
       <li><a href="/dbdemo">See database API </a></li>
       <% if (loggedIn) {%>
       <li><a href="/profile">See your profile </a></li>
       <li><a href="/profiles">See everyone's profile</a></li>
       <li><a href="/todo">See your to do list </a></li>
-      <li><a href="/todoAjax">See your to do list with Ajax </a></li>
+
       <% } %>
     </ul>
   </div>
+  <% if (loggedIn) {
+      posts.forEach(post => { %>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="row">
+            <h6 class="text-muted">Posted by <%= post.author %> <%= post.createdAt %></h6>
+          </div>
+          <h3><%= post.title %></h3>
+          <h5><%= post.writing %></h5>
+          <div class="row">
+            <div class="col-sm-4">
+              <a href="/remove/<%= post._id %>">
+        				<span class="button" id="postButton">Delete</span>
+        			</a>
+            </div>
+            <div class="col-sm-4">
+              <a href="/comments/<%= post._id %>">
+        				<span class="button" id="postButton">Comments</span>
+        			</a>
+            </div>
+          </div>
+        </div>
+
+      <%})
+   } %>
+</div>
