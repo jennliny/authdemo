@@ -33,6 +33,7 @@ router.get('/:itemId',
 router.post('/:itemId',
   isLoggedIn,
   async (req, res, next) => {
+    try {
       const newComment = new Comment(
         {
          createdAt: new Date(),
@@ -42,7 +43,13 @@ router.post('/:itemId',
          comment:req.body.comment
         })
       await newComment.save();
-      res.render('comments')
+      console.log(newComment);
+      res.redirect(`/comments/${
+             req.params.itemId}`)
+    } catch (e) {
+      next(e)
+    } 
+
 });
 
 module.exports = router;

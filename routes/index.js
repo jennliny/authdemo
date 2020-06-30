@@ -25,12 +25,6 @@ router.get('/remove/:itemId',
       res.redirect('/')
 });
 
-router.get('/comments/:itemId',
-  //isLoggedIn,
-  async (req, res, next) => {
-      console.log("inside /")
 
-      res.render('comments')
-});
 
 module.exports = router;

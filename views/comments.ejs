@@ -5,7 +5,7 @@
     </div>
     <h3><%= writing.title %></h3>
     <h5><%= writing.writing %></h5>
-    <form  method="post" action="/comment/<%= post._id %>">
+    <form  method="post" action="/comments/<%= writing._id %>">
       <textarea name="comment" rows="5" placeholder="What are your thoughts?"></textarea>
       <input class="button" id="postButton" type="submit" value="comment">
     </form>

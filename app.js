@@ -28,6 +28,7 @@ const usersRouter = require('./routes/users');
 const toDoRouter = require('./routes/todo');
 const toDoAjaxRouter = require('./routes/todoAjax');
 const writingRouter = require('./routes/writing');
+const commentsRouter = require('./routes/comments');
 
 
 const app = express();
@@ -53,6 +54,7 @@ app.use('/users', usersRouter);
 app.use('/todo',toDoRouter);
 app.use('/todoAjax',toDoAjaxRouter);
 app.use('/writing', writingRouter);
+app.use('/comments', commentsRouter);
 
 app.get('/resources', (req, res) => {
   res.render('resources')
