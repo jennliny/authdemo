@@ -27,7 +27,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const toDoRouter = require('./routes/todo');
 const toDoAjaxRouter = require('./routes/todoAjax');
-
+const writingRouter = require('./routes/writing');
 
 
 const app = express();
@@ -52,6 +52,11 @@ app.use('/users', usersRouter);
 
 app.use('/todo',toDoRouter);
 app.use('/todoAjax',toDoAjaxRouter);
+app.use('/writing', writingRouter);
+
+app.get('/resources', (req, res) => {
+  res.render('resources')
+})
 
 app.get('/profiles',
     isLoggedIn,
@@ -88,8 +93,9 @@ app.get('/profile',
     })
 
 app.get('/editProfile',
-    isLoggedIn,
-    (req,res) => res.render('editProfile'))
+    isLoggedIn, (req,res) => {
+      res.render('editProfile')
+  });
 
 app.post('/editProfile',
     isLoggedIn,
